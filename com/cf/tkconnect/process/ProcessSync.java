@@ -254,8 +254,11 @@ public class ProcessSync {
 			  }
  			}else// found we can extract from 
 				   ad = new BPAttributeData(this.company_id, bpPrefix, bpname);
-		   
-		   json= ad.getAttributeDetails();
+		   if(ad != null)
+			   json= ad.getAttributeDetails();
+		   else{
+			   json = "{\"error\":\"design not available\" }";
+		   }
 
 		   buf.append("\"bp_info\":").append(json).append("}\n");	
 		  logger.debug("getBPAttributes ****ccccc "+buf);
