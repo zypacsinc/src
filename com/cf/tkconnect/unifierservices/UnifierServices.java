@@ -100,18 +100,18 @@ public class UnifierServices {
 						bodyElement.addChildElement( param.get("param_name") ).addTextNode((objarr[i] != null) ? objarr[i].toString() : "");
 					i++;
 				}
-				logger.debug("send message:6  ::"+bodyx.toString());  
 				  //Save the message
 				  //Send the message
 				message.saveChanges();
 				//File f = new File("c:/files/asreq.txt");
 			//	FileOutputStream fs = new FileOutputStream(f);
 				//message.writeTo(fs);   
+				logger.debug("send message:6  sending ");  
 			
 				SOAPMessage reply = connection.call(message, url);
 				
 				resp = processResponse(reply);
-				logger.debug("return message: "+resp);
+				logger.debug("return soap message  recd: "+resp);
 				    //Close the connection            
 				connection.close();
 

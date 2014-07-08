@@ -72,6 +72,8 @@ public class SaveData {
 			//if there is a file id
 			String filename = "";
 			Map<String,String> fmap = null;
+			if(logger.isDebugEnabled())
+				logger.debug("FileprocessSave ************fileid  "+this.fileid);
 			if(fileid == 0){
 				filename = "unifier_"+this.prefix+"_bp.xlsx";
 				 fmap =DataUtils.processSaveData(FileUtils.getFilePath(1, filename), this.save_name,filename, this.prefix,type) ;// type 0 -save 1- run

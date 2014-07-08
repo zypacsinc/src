@@ -193,6 +193,7 @@ public class GenerateXML {
 		StringBuilder buf = new StringBuilder("<List_Wrapper>");
 		int count = 0;
 		String methodname = "";
+		String path = FileUtils.getFilePath( inputFileName) ;
 		for(String[] strs : this.upperdata){
 			if(strs == null || strs.length < 3)
 				continue;
@@ -222,8 +223,9 @@ public class GenerateXML {
 			buf.append("</List_Wrapper>");
 			map.put("BPXML", buf.toString());
 			xmlmap.add(map);
-			if(logger.isDebugEnabled())
-				logger.debug("bp generated "+count+" bpxml :"+buf);
+			logger.info("bp generated ::   "+count+" bpxml :"+buf);
+			writeXMLData(map);
+			
 			for(int i = 0; i < strs.length; i++){
 				if(i == 0)
 					rstrs[i] = strs[i];
@@ -234,6 +236,22 @@ public class GenerateXML {
 			respmap.put(strs[0], rstrs);
 			
 		}
+	}
+	private void writeXMLData(	Map<String,String> map) {
+		try{
+			// save this file generate a
+			String file = InitialSetUp.basefilepath+"/data/xml/"+FileUtils.getTodaysDateString();
+			FileUtils.checkAndCreatDir(file);
+			String outfile = file+"/"+FileUtils.getTodaysDateTimeString()+"run_.xml";
+			StringBuilder b = new StringBuilder("<runxml>");
+			b.append("<project>"+map.get("projectNumber")+"</project>");
+			b.append("<BPName>"+map.get("BPName")+"</BPName>");
+			b.append("<method_name>"+map.get("method_name")+"</method_name>");
+			b.append("<filename>"+inputFileName+"</filename>");
+			b.append("<data>"+map.get("BPXML")+"</date>").append("</runxml>");
+		
+			FileUtils.writeContent(outfile, b.toString());
+		}catch(Exception e){}
 	}
 
 	private void setBatchBPXML() throws Exception{
@@ -340,6 +358,7 @@ public class GenerateXML {
 			map.put("output_file_name", (this.outputFileName==null?"":this.outputFileName));
 			map.put("external_file_name", FileUtils.getFileName( inputFileName));
 			map.put("prefix",this.prefix);
+			map.put("method_name","create/updatebprecord");
 			map.put("saved_file_id",""+this.savedFileId);
 			this.service_id = DataUtils.createAuditServiceRecord(map);
 			if(logger.isDebugEnabled())

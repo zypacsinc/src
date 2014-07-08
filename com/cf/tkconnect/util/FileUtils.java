@@ -16,6 +16,8 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
@@ -923,6 +925,18 @@ public final class FileUtils  {
 			return "***error***";
 			
 		return nm.substring(sindex+8, eindex);	
+			
+	}
+	public static String getTodaysDateTimeString() throws Exception{
+		Date dt = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYYmmddHHMM");
+		return sdf.format(dt);
+			
+	}
+	public static String getTodaysDateString() throws Exception{
+		Date dt = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYYmmdd");
+		return sdf.format(dt);
 			
 	}
 	

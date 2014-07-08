@@ -192,8 +192,8 @@ public class WriteExcelBook {
 				logger.debug("setColumns ---- "+delist.size() );
 		 for( int columnIndex = 0; columnIndex < delist.size(); columnIndex++){
 			 String dename = delist.get(columnIndex);
-			 if(logger.isDebugEnabled())
-					logger.debug("column ----chk "+columnIndex +" de:"+dename);
+//			 if(logger.isDebugEnabled())
+//					logger.debug("column ----chk "+columnIndex +" de:"+dename);
 		 
 			//String label = (String)demap.get(dename).get("Label");
 			if(!demap.containsKey(dename)){
@@ -225,13 +225,13 @@ public class WriteExcelBook {
 
 	private void setColumnData( XSSFRow row,  String[] data){
 		
-		 if(logger.isDebugEnabled())
-				logger.debug("setColumns --data-- "+data.length );
+		// if(logger.isDebugEnabled())
+		//		logger.debug("setColumns --data-- "+data.length );
 		 
 		 for( int columnIndex = 0; columnIndex < data.length; columnIndex++){
 			 String value = data[columnIndex];
-				if(logger.isDebugEnabled())
-					logger.debug("column ----data "+columnIndex +" de:"+value);
+			//	if(logger.isDebugEnabled())
+			//		logger.debug("column ----data "+columnIndex +" de:"+value);
 	    	XSSFCell cell = row.createCell(columnIndex);
 	    	cell.setCellStyle(cellDataStyle); 
 	    	cell.setCellType( Cell.CELL_TYPE_STRING);

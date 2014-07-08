@@ -203,6 +203,7 @@ public class ReadExcel {
 	    	else
 	    		readDataRow(row,type);
 	    	count++;
+	    	logger.debug("readRows  count :"+count+"  upperdata :"+upperdata.size()+" type:"+type);
 	     }
 	}
 
@@ -259,9 +260,9 @@ public class ReadExcel {
 	    	
      }
 
-	     if(type.equals("lineitems"))
-	    	 lidata.add(strdata);
-	     else
-	    	 upperdata.add(strdata);
+     if(type.equals("lineitems"))
+    	 lidata.add(strdata);
+     else
+    	 upperdata.add(strdata);
 	}
 }

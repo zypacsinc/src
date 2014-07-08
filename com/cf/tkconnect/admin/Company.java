@@ -28,7 +28,7 @@ public class Company {
 	private int company_id;
 	private int user_id;
 	private String registryPrefix;
-	private String companyName ="ForeSee";
+	private String companyName ="KCP&L"; 
 	private String shortName;
 	private String authCode;
 	private String companyURL;
